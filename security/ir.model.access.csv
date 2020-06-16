@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+website_sale_product_stock_visitor_user,website_sale_product_stock_visitor_user_name,stock.model_stock_warehouse,,1,0,0,0
+website_sale_product_stock_visitor_location,website_sale_product_stock_visitor_user_location,stock.model_stock_location,,1,0,0,0
+website_sale_product_stock_visitor_move,website_sale_product_stock_visitor_user_move,stock.model_stock_move,,1,0,0,0
+website_sale_product_stock_visitor_quant,website_sale_product_stock_visitor_user_quant,stock.model_stock_quant,,1,0,0,0
