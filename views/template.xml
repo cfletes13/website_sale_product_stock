@@ -114,7 +114,7 @@
                     <t t-if="website.get_website_config() == 'available'">
                     <t t-if="product.product_variant_ids and product.qty_available &gt; 0">
 		                <span class="qty-text">
-		                    <t t-esc="product.qty_available"/> <t t-esc="product.sudo().uom_id.name"/> left.
+		                    <t t-esc="product.qty_available"/> <t t-esc="product.sudo().uom_id.name"/>
 		                </span>
                     </t>
                     </t>
@@ -123,7 +123,7 @@
                     <t t-set="qty_forecasted" t-value="product.qty_available - product.outgoing_qty + product.incoming_qty"/>
                     <t t-if="product.product_variant_ids and qty_forecasted &gt; 0">
 		                <span class="qty-text">
-		                    <t t-esc="qty_forecasted"/> <t t-esc="product.sudo().uom_id.name"/> left.
+		                    <t t-esc="qty_forecasted"/> <t t-esc="product.sudo().uom_id.name"/>
 		                </span>
                     </t>
                     </t>
