@@ -14,20 +14,21 @@
             <field name="model">res.config.settings</field>
             <field name="inherit_id" ref="website.res_config_settings_view_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//h2[contains(text(),'Website')]" position="before">
-                    <h2>Website Order Configuration</h2>
-                    <div class="col-xs-12 col-md-6 o_setting_box">
-                        <div class="col-md-3 o_light_label">
-                            <div class="row mt16">
-                                <label for="stock_type" string="Stock Type Configuration"/>
-                                <field name="stock_type" widget="radio"/>
+                <xpath expr="//div[@id='sale_checkout_settings']" possition="inside">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="website_order_configuration">
+                        <div class="o_setting_right_pane">
+                            <label for="stock_type"/>
+                            <div class="text-muted">
+                                Configure stock type to use on Website
                             </div>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <field name="stock_type" widget="radio"/>
                         </div>
                     </div>
                 </xpath>
             </field>
         </record>
-
 
 		<!-- New Template For Show/Hide Stock in Product Page -->
 		<template id="website_sale_product_stock.show_stock_qty_message" name="Show Stock Qty Message">
@@ -64,6 +65,8 @@
 						<t t-if="product.qty_available &gt; 0">
 				             <div id="in-stock-message" class="in-stock">
 								 <span class=""> In Stock </span>
+
+                                 <span class=""><t t-esc="'{0:,.0f}'.format(product.qty_available)"/></span>
 								 <!--span class=""><t t-esc='product.qty_available'/></span-->
 							</div>
 				        </t>
@@ -78,6 +81,7 @@
 						<t t-if="qty_forecasted &gt; 0">
 				             <div id="in-stock-message" class="in-stock">
 								 <span class=""> In Stock </span>
+                                 <span class=""><t t-esc="'{0:,.0f}'.format(qty_forecasted)"/></span>
 								 <!--span>
 									<t t-esc="qty_forecasted"/>
 								</span-->
@@ -109,12 +113,12 @@
 
 			<!-- Show Stock Qty in products_item  -->
 
-  			<xpath expr="//section//div//b" position="after">
+  			<!--xpath expr="//section//div//b" position="after">
 
                     <t t-if="website.get_website_config() == 'available'">
                     <t t-if="product.product_variant_ids and product.qty_available &gt; 0">
 		                <span class="qty-text">
-		                    <t t-esc="product.qty_available"/> <t t-esc="product.sudo().uom_id.name"/>
+		                    <t t-esc="'{0:,.0f}'.format(product.qty_available)"/> <t t-esc="product.sudo().uom_id.name"/>
 		                </span>
                     </t>
                     </t>
@@ -123,11 +127,11 @@
                     <t t-set="qty_forecasted" t-value="product.qty_available - product.outgoing_qty + product.incoming_qty"/>
                     <t t-if="product.product_variant_ids and qty_forecasted &gt; 0">
 		                <span class="qty-text">
-		                    <t t-esc="qty_forecasted"/> <t t-esc="product.sudo().uom_id.name"/>
+		                    <t t-esc="'{0:,.0f}'.format(qty_forecasted)"/> <t t-esc="product.sudo().uom_id.name"/>
 		                </span>
                     </t>
                     </t>
-            </xpath>
+            </xpath-->
 
 
             <xpath expr="//div[@itemscope='itemscope']" position="attributes">
